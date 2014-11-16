@@ -28,5 +28,11 @@ EOS
     chef.synced_folder_type = 'nfs'
     chef.add_recipe "golang"
     chef.add_recipe "devvm"
+    chef.add_recipe "elasticsearch"
+    chef.json = {
+      elasticsearch: {
+        version: '1.4.0'
+      }
+    }
   end
 end
