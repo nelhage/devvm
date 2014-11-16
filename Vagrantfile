@@ -17,4 +17,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "../", "/home/vagrant/code", type: 'nfs'
   config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provision 'shell', inline: <<EOS
+set -ex
+sudo apt-get update
+sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y chef
+EOS
+
+  config.vm.provision "chef_solo" do |chef|
+    chef.synced_folder_type = 'nfs'
+    chef.add_recipe "golang"
+    chef.add_recipe "devvm"
+  end
 end
