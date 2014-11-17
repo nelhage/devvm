@@ -31,7 +31,10 @@ EOS
     chef.add_recipe "elasticsearch"
     chef.json = {
       elasticsearch: {
-        version: '1.4.0'
+        version: '1.4.0',
+        bootstrap: {
+          mlockall: false
+        }
       }
     }
   end
