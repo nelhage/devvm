@@ -38,4 +38,10 @@ EOS
       }
     }
   end
+
+  config.vm.network "forwarded_port",
+                    guest: 9200,
+                    host:  9200,
+                    protocol: 'tcp',
+                    host_ip: '127.0.0.1'
 end
