@@ -26,14 +26,25 @@ EOS
 
   config.vm.provision "chef_solo" do |chef|
     chef.synced_folder_type = 'nfs'
+    chef.add_recipe "sysctl::apply"
     chef.add_recipe "golang"
     chef.add_recipe "devvm"
     chef.add_recipe "elasticsearch"
+
     chef.json = {
       elasticsearch: {
         version: '1.4.0',
         bootstrap: {
           mlockall: false
+        }
+      },
+      sysctl: {
+        params: {
+          kernel: {
+            yama: {
+              ptrace_scope: 0
+            }
+          }
         }
       }
     }
