@@ -30,12 +30,16 @@ EOS
     chef.add_recipe "golang"
     chef.add_recipe "devvm"
     chef.add_recipe "elasticsearch"
+    chef.add_recipe "elasticsearch::plugins"
 
     chef.json = {
       elasticsearch: {
         version: '1.4.0',
         bootstrap: {
           mlockall: false
+        },
+        plugins: {
+          'karmi/elasticsearch-paramedic' => {}
         }
       },
       sysctl: {
