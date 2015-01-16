@@ -9,3 +9,12 @@ package 'python-pexpect'
 package 'gcc-multilib'
 package 'gdb'
 package 'tmux'
+package 'sbuild'
+package 'schroot'
+package 'ubuntu-dev-tools'
+
+group 'sbuild' do
+  action :modify
+  append true
+  members 'vagrant'
+end
