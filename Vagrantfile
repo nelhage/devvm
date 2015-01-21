@@ -15,7 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.synced_folder "../", "/home/vagrant/code", type: 'nfs'
+  config.vm.synced_folder "../reptyr", "/home/vagrant/reptyr", type: 'nfs'
+  config.vm.synced_folder "../debian", "/home/vagrant/debian", type: 'nfs'
+
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provision 'shell', inline: <<EOS
@@ -34,6 +36,9 @@ EOS
 
     chef.json = {
       elasticsearch: {
+        cluster: {
+          name: "nelhage_devvm",
+        },
         version: '1.4.0',
         bootstrap: {
           mlockall: false
