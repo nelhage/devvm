@@ -17,6 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "../reptyr", "/home/vagrant/reptyr", type: 'nfs'
   config.vm.synced_folder "../debian", "/home/vagrant/debian", type: 'nfs'
+  if ENV['GOPATH']
+    config.vm.synced_folder ENV['GOPATH'], "/gopath", type: 'nfs'
+  end
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
@@ -55,6 +58,9 @@ EOS
             }
           }
         }
+      },
+      go: {
+        version: "1.4"
       }
     }
   end
