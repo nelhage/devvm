@@ -31,6 +31,7 @@ EOS
 
   config.vm.provision "chef_solo" do |chef|
     chef.synced_folder_type = 'nfs'
+    chef.add_recipe "apt"
     chef.add_recipe "sysctl::apply"
     chef.add_recipe "golang"
     chef.add_recipe "devvm"
