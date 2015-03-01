@@ -12,6 +12,8 @@ package 'tmux'
 package 'sbuild'
 package 'schroot'
 package 'ubuntu-dev-tools'
+package 'python-software-properties'
+package 'software-properties-common'
 
 group 'sbuild' do
   action :modify
