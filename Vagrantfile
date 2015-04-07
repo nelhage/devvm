@@ -61,7 +61,7 @@ EOS
         }
       },
       go: {
-        version: "1.4",
+        version: "1.4.2",
         gopath: "/gopath/",
         gobin: "/gopath/bin/"
       }
