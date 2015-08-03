@@ -11,12 +11,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   %w{vmware_fusion vmware_workstation}.each do |provider|
     config.vm.provider(provider) do |v|
       v.vmx["memsize"] = "2048"
-      v.vmx["numvcpus"] = "2"
+      v.vmx["numvcpus"] = "4"
     end
   end
 
   config.vm.synced_folder "../reptyr", "/home/vagrant/reptyr", type: 'nfs'
   config.vm.synced_folder "../debian", "/home/vagrant/debian", type: 'nfs'
+  config.vm.synced_folder "../linux", "/home/vagrant/linux", type: 'nfs'
   if ENV['GOPATH']
     config.vm.synced_folder ENV['GOPATH'], "/gopath", type: 'nfs'
   end
