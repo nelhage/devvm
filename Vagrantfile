@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder ENV['GOPATH'], "/gopath", type: 'nfs'
   end
 
-  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/vagrant", type: 'nfs'
 
   config.vm.provision 'shell', inline: <<EOS
 set -ex
